@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>壹号娱乐 · 简明指南与访问提醒</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f9fafb;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', Helvetica, Arial, sans-serif;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 2.4rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 760px;
+            width: 100%;
+        }
+
+        /* hero */
+        .hero {
+            margin-bottom: 3.6rem;
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            line-height: 1.25;
+            margin-bottom: 1rem;
+        }
+
+        .hero .overline {
+            display: inline-block;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #64748b;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #334155;
+            max-width: 620px;
+            margin-bottom: 0.3rem;
+        }
+
+        .hero .soft-note {
+            font-size: 0.95rem;
+            color: #64748b;
+            background: #f1f5f9;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 0.8rem;
+        }
+
+        /* sections */
+        section {
+            margin-bottom: 3.2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.4rem;
+            color: #0f172a;
+            letter-spacing: -0.01em;
+            border-left: 4px solid #3b82f6;
+            padding-left: 0.9rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 0.8rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #e9edf2;
+            border-radius: 14px;
+            padding: 1.5rem 1.2rem;
+            transition: box-shadow 0.15s, border-color 0.15s;
+        }
+
+        .card:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        .card .icon-placeholder {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .card p {
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.3rem;
+        }
+
+        .faq-item summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #1e293b;
+            padding: 0.4rem 0;
+            border-bottom: 1px dashed #dce2eb;
+        }
+
+        .faq-item p {
+            margin-top: 0.5rem;
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        .reminder-block {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 2.4rem;
+        }
+
+        .reminder-block strong {
+            color: #0b3b6b;
+        }
+
+        .footer-links {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 2rem;
+            font-size: 0.9rem;
+            color: #64748b;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .footer-links a {
+            color: #2563eb;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.1s;
+        }
+
+        .footer-links a:hover {
+            border-bottom-color: #2563eb;
+        }
+
+        .footer-links .small {
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e9edf2;
+            margin: 2.2rem 0;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.8rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .reminder-block {
+                padding: 1.4rem 1.2rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 0.4rem;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero 区 -->
+    <div class="hero">
+        <span class="overline">简明指南 · 访问提醒</span>
+        <h1>壹号娱乐 · 从入门到顺畅体验</h1>
+        <p>对于初次接触 <a href="https://no1-1haoent.com" style="color:#2563eb; text-decoration:underline; text-underline-offset:3px;">壹号娱乐</a> 的朋友，我们整理了一份轻量级指引，帮助你快速熟悉平台特色与访问注意事项。无论是浏览资讯还是日常使用，这些小提示都能让你更从容。</p>
+        <div class="soft-note">💡 建议收藏本页，方便随时查阅。</div>
+    </div>
+
+    <!-- 优势区 · 为什么选这里 -->
+    <section>
+        <h2>为什么选择壹号娱乐</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="icon-placeholder">🧭</div>
+                <h3>界面直觉化</h3>
+                <p>布局清晰，功能分区一目了然。从分类导航到内容展示，减少了不必要的跳转，新手也能快速上手。</p>
+            </div>
+            <div class="card">
+                <div class="icon-placeholder">⚡</div>
+                <h3>响应与稳定</h3>
+                <p>基于现代架构，页面加载与交互反馈都比较迅速。日常使用时，卡顿或延迟的情况较少出现。</p>
+            </div>
+            <div class="card">
+                <div class="icon-placeholder">🛡️</div>
+                <h3>基础安全提醒</h3>
+                <p>平台采用常规加密传输，建议用户在个人设备上保持系统与浏览器更新，并留意网络环境。</p>
+            </div>
+            <div class="card">
+                <div class="icon-placeholder">🌐</div>
+                <h3>信息覆盖全面</h3>
+                <p>涵盖多个兴趣领域，内容更新节奏稳定。你可以根据偏好订阅或浏览，不必被算法裹挟。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 说明区 · 访问提醒与使用贴士 -->
+    <section>
+        <h2>访问提醒 · 几个小贴士</h2>
+        <div class="reminder-block">
+            <p><strong>1. 域名确认</strong> — 访问时请确保地址栏显示为 <code>no1-1haoent.com</code>，避免仿冒或相似域名。收藏正确的链接可以减少误入风险。</p>
+            <p style="margin-top: 1rem;"><strong>2. 网络环境</strong> — 如果你所在地区访问不稳定，可以尝试切换网络或使用常规的 DNS 设置，多数情况下即可恢复正常。</p>
+            <p style="margin-top: 1rem;"><strong>3. 账号与隐私</strong> — 不要在公共设备上勾选“记住密码”。官方不会主动索要你的验证码或密码，遇到类似情况请保持警惕。</p>
+            <p style="margin-top: 1rem;"><strong>4. 浏览器兼容</strong> — 推荐使用 Chrome、Edge 或 Firefox 的最新版本，老旧浏览器可能出现布局偏移或功能异常。</p>
+        </div>
+        <p style="color:#475569; font-size:0.95rem; margin-top: 0.8rem;">以上提醒基于常见使用场景，希望能让你的体验更顺心。如果有其他疑问，也可以查阅平台内的帮助板块。</p>
+    </section>
+
+    <!-- FAQ 摘要（非全部，只摘取高频问题） -->
+    <section>
+        <h2>常见疑问 · 快速浏览</h2>
+        <div class="faq-item">
+            <details>
+                <summary>壹号娱乐主要提供哪些内容？</summary>
+                <p>平台聚合了多种娱乐与资讯类内容，涵盖游戏、生活、文化等方面。整体风格偏向轻松实用，适合碎片时间浏览。</p>
+            </details>
+        </div>
+        <div class="faq-item">
+            <details>
+                <summary>是否需要注册才能使用？</summary>
+                <p>部分功能或内容可能需要注册账号，但基础的浏览与搜索通常可以直接进行。注册流程简单，只需要邮箱或手机号。</p>
+            </details>
+        </div>
+        <div class="faq-item">
+            <details>
+                <summary>怎样联系客服或反馈问题？</summary>
+                <p>通常在页面底部或“帮助/支持”区域可以找到反馈入口。也可以通过官方社交账号留言，响应速度视工作日而定。</p>
+            </details>
+        </div>
+        <div class="faq-item">
+            <details>
+                <summary>移动端体验如何？</summary>
+                <p>页面适配了手机与平板，触控操作友好。不过部分复杂交互在横屏模式下可能更直观，你可以根据设备灵活调整。</p>
+            </details>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- 底部链接 -->
+    <div class="footer-links">
+        <span>© 2025 · 非官方介绍页 · 仅供指引参考</span>
+        <span>
+            <a href="https://no1-1haoent.com">壹号娱乐</a>
+            <span class="small">· 直接前往</span>
+        </span>
+    </div>
+
+</div>
+</body>
+</html>
