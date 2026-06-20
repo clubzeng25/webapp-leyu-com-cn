@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>天天盈球 · 产品说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f4f9fc;
+            color: #1e2b38;
+            line-height: 1.6;
+            padding: 0 1rem;
+        }
+
+        .wrapper {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2.5rem 0 4rem;
+        }
+
+        /* 网格背景装饰（极其克制的网格线） */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background-image:
+                linear-gradient(rgba(46, 139, 128, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(46, 139, 128, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* 所有内容放在相对层 */
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 卡片通用 */
+        .card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            border-radius: 24px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 8px 20px rgba(30, 43, 56, 0.04), 0 2px 6px rgba(46, 139, 128, 0.06);
+            border: 1px solid rgba(46, 139, 128, 0.12);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 28px rgba(30, 43, 56, 0.08);
+        }
+
+        /* hero 区 */
+        .hero {
+            padding: 0.8rem 0 3rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0f2e2b;
+            background: linear-gradient(135deg, #0d403c, #206a61);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.2rem;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #3d5f5a;
+            border-bottom: 2px solid rgba(46, 139, 128, 0.2);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .hero p {
+            margin-top: 1.2rem;
+            max-width: 620px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.05rem;
+            color: #2b4642;
+        }
+
+        /* 摘要卡 */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (min-width: 600px) {
+            .summary-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .summary-card {
+            background: white;
+            border: 1px solid #d6e7e4;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(46, 139, 128, 0.03);
+        }
+
+        .summary-card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #0d403c;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .summary-card h3::before {
+            content: "◆";
+            font-size: 0.8rem;
+            color: #2e8b80;
+        }
+
+        .summary-card p {
+            font-size: 0.96rem;
+            color: #2f4a46;
+        }
+
+        /* 亮点网格 */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0 1.8rem;
+        }
+
+        @media (min-width: 520px) {
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 820px) {
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .highlight-item {
+            background: white;
+            border-radius: 18px;
+            padding: 1.4rem 1.2rem;
+            border: 1px solid #e0efeb;
+            transition: border-color 0.2s;
+        }
+
+        .highlight-item:hover {
+            border-color: #2e8b80;
+        }
+
+        .highlight-item .icon {
+            display: inline-block;
+            font-size: 1.6rem;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            color: #206a61;
+        }
+
+        .highlight-item h4 {
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: #0d403c;
+            margin-bottom: 0.3rem;
+        }
+
+        .highlight-item p {
+            font-size: 0.9rem;
+            color: #3d5f5a;
+        }
+
+        /* 使用建议 + 场景混合区 */
+        .advice-block {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .advice-block .card {
+            flex: 1 1 260px;
+        }
+
+        .advice-block h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #0d403c;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid #2e8b80;
+            padding-left: 0.8rem;
+        }
+
+        .advice-block ul {
+            list-style: none;
+        }
+
+        .advice-block li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            color: #2f4a46;
+        }
+
+        .advice-block li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #2e8b80;
+        }
+
+        .faq-mini {
+            margin: 2rem 0 1.5rem;
+        }
+
+        .faq-mini .faq-item {
+            background: white;
+            border-radius: 14px;
+            padding: 1rem 1.3rem;
+            margin-bottom: 0.8rem;
+            border: 1px solid #e0efeb;
+        }
+
+        .faq-mini .faq-item strong {
+            display: block;
+            font-weight: 500;
+            color: #0d403c;
+            margin-bottom: 0.2rem;
+            font-size: 1rem;
+        }
+
+        .faq-mini .faq-item p {
+            font-size: 0.9rem;
+            color: #3d5f5a;
+            margin: 0;
+        }
+
+        /* 可信提示条 */
+        .note-strip {
+            background: #e7f3f0;
+            border-radius: 40px;
+            padding: 0.9rem 1.5rem;
+            display: inline-block;
+            font-size: 0.85rem;
+            color: #1e554d;
+            border: 1px solid #c5ddd8;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .note-strip span {
+            font-weight: 500;
+        }
+
+        .footer-link-wrap {
+            margin-top: 3rem;
+            text-align: center;
+            border-top: 1px solid #d6e7e4;
+            padding-top: 2rem;
+            font-size: 0.95rem;
+            color: #3d5f5a;
+        }
+
+        .footer-link-wrap a {
+            color: #0d403c;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #2e8b80;
+            transition: border-bottom 0.2s;
+        }
+
+        .footer-link-wrap a:hover {
+            border-bottom: 2px solid #1e6b60;
+        }
+
+        .fine-print {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #7f9994;
+        }
+
+        /* 按钮风格的链接（不破坏规则：文本只有“天天盈球”） */
+        .btn-like-link {
+            display: inline-block;
+            background: transparent;
+            border: 1px solid #2e8b80;
+            color: #0d403c;
+            padding: 0.1rem 0.9rem;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-like-link:hover {
+            background: #2e8b80;
+            color: white;
+        }
+
+        a {
+            color: #1e6b60;
+        }
+
+        /* 间距微调 */
+        hr.soft {
+            border: none;
+            border-top: 1px solid #d6e7e4;
+            margin: 0.8rem 0 1.8rem;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<div class="wrapper content">
+    <!-- hero -->
+    <div class="hero">
+        <h1>天天盈球</h1>
+        <div class="sub">产品说明 · 稳定入口</div>
+        <p>一份关于日常使用场景与产品特性的温和介绍，帮助你更顺畅地了解这个服务。</p>
+    </div>
+
+    <!-- 摘要卡片 2列 -->
+    <div class="summary-grid">
+        <div class="summary-card">
+            <h3>关于入口</h3>
+            <p>无论你是初次接触，还是希望找一个可靠的常备入口，<a href="https://tiantyingqiu.com" style="text-decoration: underline; text-underline-offset: 3px;">天天盈球</a> 都可以作为你的一个日常选项。页面结构简洁，减少不必要的跳转干扰。</p>
+        </div>
+        <div class="summary-card">
+            <h3>产品定位</h3>
+            <p>它不是一个万能工具，但在信息聚合与轻量交互方面，提供了相对清晰的路径。适合在需要快速浏览相关内容时使用。</p>
+        </div>
+    </div>
+
+    <!-- 亮点 网格3列 -->
+    <div class="grid-3">
+        <div class="highlight-item">
+            <div class="icon">🔄</div>
+            <h4>稳定访问</h4>
+            <p>服务端结构经过多次调整，目前保持较低的响应延迟。日常使用时，页面加载与交互反馈比较流畅。</p>
+        </div>
+        <div class="highlight-item">
+            <div class="icon">🧩</div>
+            <h4>模块化布局</h4>
+            <p>首页采用分区设计，每个区块承担独立功能，便于你快速找到感兴趣的部分，而不是陷入冗长的滚动。</p>
+        </div>
+        <div class="highlight-item">
+            <div class="icon">📱</div>
+            <h4>移动优先</h4>
+            <p>针对手机屏幕做了适配，按钮与卡片间距适中，单手操作时不容易误触。平板与桌面同样保持良好的可读性。</p>
+        </div>
+    </div>
+
+    <!-- 使用建议 + 场景 混合区 -->
+    <div class="advice-block">
+        <div class="card">
+            <h3>使用建议</h3>
+            <ul>
+                <li>将 <a href="https://tiantyingqiu.com" class="btn-like-link">天天盈球</a> 加入浏览器书签，便于日常快速打开。</li>
+                <li>适合在碎片时间里浏览，页面内容密度适中，不会给视觉带来太大负担。</li>
+                <li>如果你需要更深入的数据或定制功能，可以先从首页的导航区域了解分类。</li>
+                <li>保持浏览器版本更新，以获得最佳的样式与交互支持。</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>常见场景</h3>
+            <ul>
+                <li>早晨快速查看信息摘要，了解昨日动态。</li>
+                <li>午休时用手机打开，浏览分类更新。</li>
+                <li>作为备用入口，在主渠道不稳定时切换使用。</li>
+                <li>推荐给身边朋友时，直接分享链接 <span style="font-family: monospace; background: #e7f3f0; padding: 0.1rem 0.3rem; border-radius: 4px;">tiantyingqiu.com</span> 即可。</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <h3 style="font-weight: 500; color: #0d403c; margin-bottom: 1rem; font-size: 1.15rem; border-left: 4px solid #2e8b80; padding-left: 0.8rem;">你可能想了解的</h3>
+        <div class="faq-item">
+            <strong>这个服务需要注册吗？</strong>
+            <p>部分功能无需注册即可浏览，某些个性化操作可能需要简单注册。具体以页面实际提示为准。</p>
+        </div>
+        <div class="faq-item">
+            <strong>内容更新频率如何？</strong>
+            <p>保持日常更新，但不会过于频繁。你可以把它当作一个节奏适中的信息源。</p>
+        </div>
+        <div class="faq-item">
+            <strong>移动端和桌面体验一致吗？</strong>
+            <p>核心功能一致，布局会自适应。桌面端显示更多信息密度，移动端更强调单手操作与卡片聚合。</p>
+        </div>
+    </div>
+
+    <!-- 可信但克制的说明条 -->
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin: 1.5rem 0 0.5rem;">
+        <div class="note-strip">
+            <span>💡</span> 本页面为产品说明，不构成任何承诺或保证。所有体验以实际访问为准。
+        </div>
+        <div style="font-size: 0.85rem; color: #4d6e68;">
+            <span style="background: #dfece8; border-radius: 14px; padding: 0.15rem 0.8rem;">版本说明 · 2025.04</span>
+        </div>
+    </div>
+
+    <!-- 底部链接区域（自然嵌入句子） -->
+    <div class="footer-link-wrap">
+        <p>
+           如果你想进一步了解，可以直接前往 <a href="https://tiantyingqiu.com">天天盈球</a>，那里有更完整的页面等待你。
+        </p>
+        <div class="fine-print">
+            © 本介绍页仅用于产品说明展示。不收集任何信息。<br>
+            页面内容基于公开信息编撰，保持客观与克制。
+        </div>
+    </div>
+</div>
+</body>
+</html>
