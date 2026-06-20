@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华体会 · 专题介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #f1f3f5;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1e2a35;
+            padding: 2rem 1rem;
+        }
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* hero 横幅 */
+        .hero {
+            background: linear-gradient(145deg, #e4e9ef 0%, #d5dce3 100%);
+            border-radius: 32px;
+            padding: 3rem 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0,0,0,0.02);
+            border: 1px solid rgba(255,255,255,0.6);
+            position: relative;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 32px;
+            pointer-events: none;
+            background: radial-gradient(circle at 90% 20%, rgba(255,255,255,0.2), transparent 70%);
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #1a2630;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+        }
+        .hero .subhead {
+            font-size: 1.2rem;
+            font-weight: 350;
+            color: #2f3e4b;
+            max-width: 600px;
+            border-left: 4px solid #7c8b9a;
+            padding-left: 1.2rem;
+            margin-top: 0.8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 卡片式分区 */
+        .section-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3.5rem;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 2rem 2.2rem;
+            border: 1px solid #e6eaef;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0,0,0,0.01);
+            transition: box-shadow 0.15s ease;
+        }
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .card h2 {
+            font-size: 1.6rem;
+            font-weight: 460;
+            margin-bottom: 1.2rem;
+            color: #1f2d39;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .card h2 span {
+            display: inline-block;
+            width: 8px;
+            height: 24px;
+            background: #8899aa;
+            border-radius: 4px;
+            margin-right: 0.2rem;
+        }
+        .card p {
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            color: #2c3b48;
+        }
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-link {
+            color: #1a5d8f;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+        .highlight-link:hover {
+            border-bottom-color: #1a5d8f;
+        }
+
+        /* 引述/提示卡片 */
+        .notice-block {
+            background: #f7f9fb;
+            border-radius: 28px;
+            padding: 2rem 2.2rem;
+            border: 1px solid #dce2e9;
+            margin-bottom: 3rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .notice-block p {
+            font-size: 1.1rem;
+            color: #24323f;
+        }
+
+        /* 页尾 */
+        .footer {
+            text-align: center;
+            padding: 2rem 0 1rem;
+            border-top: 1px solid #d9dfe6;
+            margin-top: 1.8rem;
+            color: #4d5f6e;
+            font-size: 0.95rem;
+        }
+        .footer a {
+            color: #1a5d8f;
+            text-decoration: none;
+            border-bottom: 1px dotted #b0becb;
+        }
+        .footer a:hover {
+            border-bottom-style: solid;
+        }
+
+        /* 响应式 */
+        @media (min-width: 700px) {
+            .section-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.8rem;
+            }
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+        }
+        @media (min-width: 1000px) {
+            .section-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+            .hero {
+                padding: 4rem 3.5rem;
+            }
+            .hero h1 {
+                font-size: 3.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+            .hero {
+                padding: 2rem 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .card {
+                padding: 1.5rem 1.2rem;
+            }
+            .notice-block {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero 首页横幅 -->
+    <header class="hero">
+        <h1>华体会 · 从一处入口开始</h1>
+        <div class="subhead">我们常把一件事的起点称为「入口」，而一个可靠的入口往往决定了之后的体验是否顺畅。今天和你聊聊这个界面之后的稳定与日常。</div>
+    </header>
+
+    <!-- 三段自然介绍 + 卡片布局 -->
+    <div class="section-grid">
+        <!-- 卡片 1：背景与说明 -->
+        <section class="card">
+            <h2><span></span> 入口的份量</h2>
+            <p>在信息纷杂的网络里，找到一个不变、稳定的地址，就像在熟悉的街区里认准一扇门。你只需要知道它就在那里，不必每次都重新辨认方向。<br>
+            许多人第一次打开 <a href="https://zhweb--hth.com" class="highlight-link">华体会</a> 的时候，往往只是抱着一份简单的期待——想看的内容能顺利出现，页面能正常打开。这种朴素的愿望，恰恰是对一个网站最真实的信任。</p>
+            <p>没有花哨的引导，也没有刻意的催促，只是安安静静地让一个页面承载起它该有的功能。这种质感，反而让人觉得踏实。</p>
+        </section>
+
+        <!-- 卡片 2：稳定入口与日常使用 -->
+        <section class="card">
+            <h2><span></span> 页面背后的事</h2>
+            <p>做一个长期可用的页面，比想象中更需要耐心。从服务器响应到界面排版，从文字内容到视觉风格，每一个细节都是为了让「打开」这个动作本身变得轻松。<br>
+            这里没有复杂的广告堆叠，也没有来回跳转的迷宫。你可以把它理解为一个安静的阅读空间——信息就在那里，你来了，就能看到。</p>
+            <p>很多人习惯把网址记在备忘录里，或者放在浏览器书签栏，因为知道它不会突然消失，也不会变成另一个完全陌生的样子。这种确定性，在日常使用中其实很珍贵。</p>
+        </section>
+
+        <!-- 卡片 3：场景与感受 -->
+        <section class="card">
+            <h2><span></span> 一种自然的节奏</h2>
+            <p>工作间隙、睡前或者周末的上午，你可能想打开一个页面，看看有没有新内容，或者只是随意翻翻。这种场景不需要任何心理负担，也不需要先完成什么「注册」「登录」的步骤。<br>
+            好的体验往往是不留痕迹的——你几乎没有感受到设计的存在，只是流畅地完成了阅读和浏览。</p>
+            <p>当页面足够简洁，内容本身的节奏就会凸显出来。这也是为什么很多人在使用 <a href="https://zhweb--hth.com" class="highlight-link">华体会</a> 之后，会习惯性地把它当作每日信息的一部分。</p>
+        </section>
+    </div>
+
+    <!-- FAQ 摘要 + 提示卡片 -->
+    <div class="notice-block">
+        <p><strong>一些你可能想了解的事：</strong> 页面长期维护，地址不变；内容偏重生活化与实用信息，不追求夸张标题；界面适配手机和电脑，浅灰底色对阅读更友好。<br>
+        如果你刚接触这里，不妨从首页开始慢慢翻看。稳定入口这件事，有时候比内容本身更需要时间体会。</p>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <footer class="footer">
+        <p>日常入口：<a href="https://zhweb--hth.com">华体会</a> · 关于本页 · 专题介绍</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #6d7f8e;">保持简单，保持开放</p>
+    </footer>
+</div>
+</body>
+</html>
