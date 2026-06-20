@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng28 知识库 · 站点介绍与信息索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fde9da 0%, #f5d6b3 50%, #efc9a4 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        .page-wrap {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* 主卡片容器 */
+        .main-card {
+            background: #fffffffa;
+            backdrop-filter: blur(2px);
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -10px rgba(100, 60, 30, 0.18), 0 8px 20px rgba(0,0,0,0.03);
+            padding: 2.5rem 2.2rem;
+            margin-bottom: 2.2rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .main-card:hover {
+            box-shadow: 0 24px 40px -12px rgba(120, 70, 35, 0.22);
+        }
+
+        /* 标题区 */
+        .hero-title {
+            font-size: 2.6rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            color: #2f1d0c;
+            margin-bottom: 0.35rem;
+            line-height: 1.2;
+        }
+
+        .hero-title span {
+            background: linear-gradient(to right, #b86f3a, #9b582a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            color: #624832;
+            font-size: 1.1rem;
+            font-weight: 380;
+            border-left: 5px solid #d7a076;
+            padding-left: 1rem;
+            margin: 0.8rem 0 1.5rem 0;
+            opacity: 0.8;
+        }
+
+        /* 目录感布局 —— 网格卡片 */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .grid-item {
+            background: #faf2ea;
+            border-radius: 24px;
+            padding: 1.6rem 1.3rem;
+            transition: background 0.15s, transform 0.1s;
+            border: 1px solid #f0ddd0;
+        }
+
+        .grid-item:hover {
+            background: #f5eadd;
+            transform: translateY(-2px);
+        }
+
+        .grid-item h3 {
+            font-size: 1.25rem;
+            font-weight: 530;
+            color: #3f2817;
+            margin-bottom: 0.65rem;
+            letter-spacing: -0.01em;
+        }
+
+        .grid-item p {
+            color: #493a2b;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .grid-item .badge {
+            display: inline-block;
+            background: #d9b99b;
+            color: #281c10;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.65rem;
+            border-radius: 40px;
+            margin-top: 0.6rem;
+            font-weight: 450;
+            letter-spacing: 0.3px;
+        }
+
+        /* 介绍段落 */
+        .intro-block {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 2rem;
+            margin: 1.2rem 0 2rem 0;
+        }
+
+        .intro-text {
+            flex: 2.2;
+            min-width: 220px;
+        }
+
+        .intro-text p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            color: #3b2b1d;
+            font-size: 1rem;
+        }
+
+        .intro-text .link-sentence {
+            background: #f6ede4;
+            padding: 0.6rem 1rem;
+            border-radius: 40px;
+            display: inline-block;
+            font-size: 0.95rem;
+            margin-top: 0.3rem;
+        }
+
+        .intro-text a {
+            color: #9b582a;
+            text-decoration: none;
+            font-weight: 520;
+            border-bottom: 1.5px dotted #d7a076;
+            transition: border 0.1s;
+        }
+
+        .intro-text a:hover {
+            border-bottom: 2px solid #7f431e;
+            color: #7f431e;
+        }
+
+        .intro-aside {
+            flex: 1.2;
+            min-width: 160px;
+            background: #f5e4d3;
+            border-radius: 28px;
+            padding: 1.3rem 1.2rem;
+        }
+
+        .intro-aside h4 {
+            font-weight: 500;
+            color: #412e1c;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .intro-aside ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .intro-aside li {
+            padding: 0.25rem 0;
+            font-size: 0.9rem;
+            color: #4e3925;
+            border-bottom: 1px dashed #e0c7b2;
+            margin-bottom: 0.2rem;
+        }
+
+        .intro-aside li:last-child {
+            border-bottom: none;
+        }
+
+        /* 提示区 */
+        .tip-area {
+            background: #efe2d4;
+            border-radius: 40px;
+            padding: 1.2rem 1.8rem;
+            margin: 2rem 0 1.8rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.8rem 1.5rem;
+        }
+
+        .tip-icon {
+            background: #dbb99b;
+            border-radius: 50%;
+            width: 2.4rem;
+            height: 2.4rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #311f10;
+            flex-shrink: 0;
+        }
+
+        .tip-content {
+            flex: 1;
+            font-size: 0.95rem;
+            color: #2d1f11;
+            line-height: 1.6;
+        }
+
+        .tip-content strong {
+            font-weight: 560;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #f0ddd0;
+            padding: 1rem 0.2rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 510;
+            color: #3f2817;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .faq-a {
+            color: #524031;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .faq-a a {
+            color: #9b582a;
+            text-decoration: underline dotted 1px;
+            font-weight: 450;
+        }
+
+        .faq-a a:hover {
+            color: #6a3d1d;
+        }
+
+        /* 相关信息区 */
+        .related-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            background: #f7eee6;
+            border-radius: 26px;
+            padding: 1.4rem 1.8rem;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .related-item {
+            flex: 1;
+            min-width: 130px;
+        }
+
+        .related-item h5 {
+            font-weight: 520;
+            color: #3b2818;
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .related-item p {
+            font-size: 0.85rem;
+            color: #5a4532;
+        }
+
+        .related-item a {
+            color: #9b582a;
+            text-decoration: none;
+            font-weight: 460;
+            border-bottom: 1px dashed #d7a076;
+        }
+
+        .related-item a:hover {
+            border-bottom: 1.5px solid #7f431e;
+        }
+
+        /* 页脚小字 */
+        .footer-note {
+            text-align: center;
+            color: #7e6956;
+            font-size: 0.75rem;
+            margin-top: 2rem;
+            letter-spacing: 0.3px;
+            opacity: 0.7;
+        }
+
+        /* 响应式 */
+        @media (max-width: 680px) {
+            .main-card {
+                padding: 1.8rem 1.2rem;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .intro-block {
+                flex-direction: column;
+            }
+            .tip-area {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem 1.2rem;
+            }
+            .related-box {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- 主卡片 -->
+    <div class="main-card">
+
+        <!-- hero 标题区 -->
+        <div class="hero-title">
+            关于 <span>ng28</span> 信息库
+        </div>
+        <div class="hero-sub">
+            站点介绍 · 可信说明 · 常见索引
+        </div>
+
+        <!-- 目录感卡片网格 -->
+        <div class="info-grid">
+            <div class="grid-item">
+                <h3>站点定位</h3>
+                <p>面向日常浏览与信息查询的轻量入口，保持页面简洁、加载流畅，内容围绕用户常见需求整理。</p>
+                <span class="badge">结构说明</span>
+            </div>
+            <div class="grid-item">
+                <h3>可信背景</h3>
+                <p>基于公开信息整理，不涉及任何诱导或夸大描述，页面由常规技术栈搭建，无隐藏追踪逻辑。</p>
+                <span class="badge">透明原则</span>
+            </div>
+            <div class="grid-item">
+                <h3>内容方向</h3>
+                <p>以实用信息与导航索引为主，不做虚假承诺或误导性表述，注重阅读体验与基础可用性。</p>
+                <span class="badge">知识库倾向</span>
+            </div>
+            <div class="grid-item">
+                <h3>更新说明</h3>
+                <p>页面内容会跟随站点调整而更新，保持目录和提示部分的时效性，建议定期浏览了解变化。</p>
+                <span class="badge">维护动态</span>
+            </div>
+        </div>
+
+        <!-- 介绍与可信说明区（嵌入链接） -->
+        <div class="intro-block">
+            <div class="intro-text">
+                <p>这个页面是一个知识库式索引页，集中呈现与 <a href="https://cn1-ng28.com">ng28</a> 相关的站点背景与常见信息。我们尝试用偏生活化的语言说明网站的功能定位、内容边界与使用提示，让第一次接触的人能快速建立认知。无论你是为了简单了解，还是想确认某些细节，这个页面都能提供一定参考。</p>
+                <p>值得强调的是：所有表述均基于可查的公开事实，不包含任何夸大或未经核实的部分。如果你正在寻找一个可靠的信息出发点，可以留意以下各区块的内容摘要——它们按照目录思维排列，方便你按需浏览。</p>
+                <div class="link-sentence">
+                    🔗 链接示例：<a href="https://cn1-ng28.com">ng28</a> 网站作为信息集合页，本身不收集隐私数据。
+                </div>
+            </div>
+            <div class="intro-aside">
+                <h4>📋 快速索引</h4>
+                <ul>
+                    <li>站点用途 · 浏览指引</li>
+                    <li>内容类型 · 分类说明</li>
+                    <li>常见疑问 · FAQ 摘要</li>
+                    <li>信任参考 · 无诱导机制</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 提示区 -->
+        <div class="tip-area">
+            <div class="tip-icon">💡</div>
+            <div class="tip-content">
+                <strong>提示：</strong> 本页面仅作为信息介绍使用，不构成任何形式的建议或保证。所有链接均指向 <a href="https://cn1-ng28.com" style="color:#7f431e;text-decoration: underline dotted 1px;">ng28</a> 相关资源，请根据自身情况判断是否合适。
+            </div>
+        </div>
+
+        <!-- FAQ 摘要区 -->
+        <div class="faq-mini">
+            <div class="faq-item">
+                <div class="faq-q">❓ 这个站点主要提供什么？</div>
+                <div class="faq-a">主要用来呈现一些结构化的信息与索引，方便快速查阅。不涉及交易、下载或注册引导。更多细节可以通过 <a href="https://cn1-ng28.com">ng28</a> 页面了解。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">❓ 内容是否可靠？</div>
+                <div class="faq-a">所有描述均基于页面本身展示的信息，我们尽量保持中立、克制，不夹带主观诱导。如果发现任何偏差，欢迎通过常规渠道反馈。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">❓ 链接安全吗？</div>
+                <div class="faq-a">链接指向的域名为 <a href="https://cn1-ng28.com">ng28</a> ，采用常规 HTTPS 协议。但用户仍需根据自身网络环境判断，本页不做任何担保。</div>
+            </div>
+        </div>
+
+        <!-- 相关信息区 -->
+        <div class="related-box">
+            <div class="related-item">
+                <h5>🔄 相关参考</h5>
+                <p>同类信息聚合页可提供额外上下文，但请以官方或一手来源为准。</p>
+            </div>
+            <div class="related-item">
+                <h5>📎 信息边界</h5>
+                <p>本页不涉及任何第三方服务或隐藏跳转，所有链接均显式标注。</p>
+            </div>
+            <div class="related-item">
+                <h5>🧭 浏览建议</h5>
+                <p>如需更深入了解，可直接访问 <a href="https://cn1-ng28.com">ng28</a> 站点，获取第一手内容。</p>
+            </div>
+        </div>
+
+    </div> <!-- end main-card -->
+
+    <div class="footer-note">
+        — 知识库式介绍页 · 内容仅供参考 · 保持开放与审慎 —
+    </div>
+
+</div> <!-- end page-wrap -->
+</body>
+</html>
